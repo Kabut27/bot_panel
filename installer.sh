@@ -5,7 +5,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/givpn/bot_panel/master/access > /root/tmp
+    curl -sS https://raw.githubusercontent.com/Kabut27/bot_panel/master/access > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -120,7 +120,7 @@ dircreate
         }
         echo -ne "Username admin panel use '@' [Ex: @givpn] : "
         read admin_pnl
-        [[ -z $admin_pnl ]] && admin_pnl="@givpn"
+        [[ -z $admin_pnl ]] && admin_pnl="@kabuti"
         echo ""
         echo -ne "Limit trial for reseller create user trial [default:1] : "
         read limit_pnl
@@ -139,24 +139,24 @@ EOF
         echo -e "Info...\n"
         fun_bot1() {
             [[ ! -e "/etc/.maAsiss/.Shellbtsss" ]] && {
-				wget -qO- https://raw.githubusercontent.com/givpn/bot_panel/master/ShellBot.sh >/etc/.maAsiss/.Shellbtsss
+				wget -qO- https://raw.githubusercontent.com/Kabut27/bot_panel/master/ShellBot.sh >/etc/.maAsiss/.Shellbtsss
 			}
 			[[ "$(grep -wc "givpn_bot" "/etc/rc.local")" = '0' ]] && {
-			    sed -i '$ i\screen -dmS givpn_bot bbt' /etc/rc.local >/dev/null 2>&1
+			    sed -i '$ i\screen -dmS esimtz_bot bbt' /etc/rc.local >/dev/null 2>&1
 			}
         }
-        screen -dmS givpn_bot bbt >/dev/null 2>&1
+        screen -dmS esimtz_bot bbt >/dev/null 2>&1
         fun_bot1
-        [[ $(ps x | grep "givpn_bot" | grep -v grep | wc -l) != '0' ]] && echo -e "\nBot successfully activated !" || echo -e "\nError1! Information not valid !"
+        [[ $(ps x | grep "esimtz_bot" | grep -v grep | wc -l) != '0' ]] && echo -e "\nBot successfully activated !" || echo -e "\nError1! Information not valid !"
         sleep 2
         menu
         } || {
        clear
         echo -e "Info...\n"
         fun_bot2() {
-            screen -r -S "givpn_bot" -X quit >/dev/null 2>&1
-            [[ $(grep -wc "givpn_bot" /etc/rc.local) != '0' ]] && {
-                sed -i '/givpn_bot/d' /etc/rc.local
+            screen -r -S "esimtz_bot" -X quit >/dev/null 2>&1
+            [[ $(grep -wc "esimtz_bot" /etc/rc.local) != '0' ]] && {
+                sed -i '/esimtz_bot/d' /etc/rc.local
             }
             rm -f /etc/.maAsiss/bot.conf
             sleep 1
